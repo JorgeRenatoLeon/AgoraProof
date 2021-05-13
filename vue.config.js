@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'    ? '/basic-video-call/'    : '/'
+  publicPath: process.env.NODE_ENV === 'production'    ? '/AgoraProof/'    : '/'
 }
