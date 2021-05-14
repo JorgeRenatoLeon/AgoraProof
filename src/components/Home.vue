@@ -83,22 +83,22 @@ export default {
         return
       }
       this.rtc.joinChannel(this.option).then(() => {
-        this.$message({
+        /* this.$message({
           message: 'Conexión al canal exitosa',
           type: 'success'
-        });
+        }); */
         this.rtc.publishStream().then((stream) => {
-          this.$message({
+          /* this.$message({
             message: 'Publicación de video exitosa',
             type: 'success'
-          });
+          }); */
           this.localStream = stream
         }).catch((err) => {
-          this.$message.error('Error al publicar el video');
+          /* this.$message.error('Error al publicar el video'); */
           log('publish local error', err)
         })
       }).catch((err) => {
-        this.$message.error('Error al conectarse al canal');
+        /* this.$message.error('Error al conectarse al canal'); */
         log('join channel error', err)
       })
       this.disableJoin = true
@@ -106,12 +106,12 @@ export default {
     leaveEvent () {
       this.disableJoin = false
       this.rtc.leaveChannel().then(() => {
-        this.$message({
+        /* this.$message({
           message: 'Salida del canal exitosa',
           type: 'success'
-        });
+        }); */
       }).catch((err) => {
-        this.$message.error('Error al salir del canal')
+        /* this.$message.error('Error al salir del canal') */
         log('leave error', err)
       })
       this.localStream = null
@@ -150,11 +150,12 @@ export default {
     })
 
     rtc.on('peer-online', (evt) => {
-      this.$message(`Peer ${evt.uid} is online`)
+      /* this.$message(`Peer ${evt.uid} is online`) */
+      console.log(evt);
     })
 
     rtc.on('peer-leave', (evt) => {
-      this.$message(`Peer ${evt.uid} already leave`)
+      /* this.$message(`Peer ${evt.uid} already leave`) */
       this.remoteStreams = this.remoteStreams.filter((it) => it.getId() !== evt.uid)
     })
   }
